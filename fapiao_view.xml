@@ -21,9 +21,10 @@
             <field name="arch" type="xml">
                 <form >
                     <header>
-                        <button name="fapiao_confirmed" type="object" string="确认" class="oe_highlight"/>
-                        <button name="fapiao_cancel" type="object" string="取消"/>
-                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,cancel"/>
+                        <button name="fapiao_confirmed" type="object" string="确认" class="oe_highlight" attrs="{'invisible': [('state','in',['confirmed','cancel'])]}"/>
+                        <button name="fapiao_cancel" type="object" string="取消" attrs="{'invisible': [('state','not in',['confirmed'])]}"/>
+                        <button name="fapiao_refunded" type="object" string="退票" class="oe_highlight" attrs="{'invisible': [('state','not in',['confirmed'])]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,fapiao_refunded,cancel"/>
                     </header>
                 	<sheet >
                 		<group>
