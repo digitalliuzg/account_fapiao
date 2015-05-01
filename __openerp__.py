@@ -8,14 +8,13 @@
 
 
 {
-    'name': '根据账单明细开发票',
+    'name': '开发票',
 
     'category': 'account',
     'sequence': 10,
 
-    'name': '根据账单明细开发票',
     'description': """
-        根据账单明细开发票
+        根据收入明细开发票
     """,
     'author': 'ZWL',
 
