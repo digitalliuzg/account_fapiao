@@ -14,7 +14,7 @@ class account_fapiao(models.Model):
     name=fields.Integer(string="Fapiao Number", required=True)
     fapiao_date=fields.Date(string="Fapiao Date", required=True,default=fields.Date.today)
     category_id=fields.Many2one('res.partner.category',string=u'发票抬头')
-    amount_with_taxes=fields.Float('Fapiao total amount', required=True)
+    amount_with_taxes = fields.Float('Fapiao total amount', compute='_compute_amount_with_taxes')
     notes=fields.Text(string="Notes")
     partner_id=fields.Many2one('res.partner',string='Partner')
     fapiao_line_id=fields.One2many('account.fapiao.line','fapiao_id')
@@ -24,6 +24,11 @@ class account_fapiao(models.Model):
         ('refunded','Refunded'),
         ('cancel','Cancel')
     ], string=u'状态',default='draft')
+
+    @api.depends('fapiao_line_id')
+    def _compute_amount_with_taxes(self):
+        if self.fapiao_line_id:
+            self.amount_with_taxes = sum((l.amount for l in self.fapiao_line_id))
 
     def _compute_balance(self,line,amount_original):
 
