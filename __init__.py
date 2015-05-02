@@ -1,2 +1,2 @@
-import account_fapiao_new
+import models
 # import account_move_line
