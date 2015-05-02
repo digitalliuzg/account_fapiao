@@ -1,0 +1,4 @@
+import account_fapiao
+import account_fapiao_new
+import account_invoice
+import account_move_line
