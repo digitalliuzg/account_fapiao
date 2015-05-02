@@ -22,7 +22,7 @@
     'depends': ['base','account','stock','product','sale'],
     'data': [
         # 'account_invoice.xml',
-        'views/fapiao_view.xml',
+        'fapiao_view.xml',
 
     ],
 
